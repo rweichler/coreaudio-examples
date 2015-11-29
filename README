@@ -1,0 +1,13 @@
+these have been adapted to better suit my workflow.
+
+i.e.:
+
+i have deleted all of the xcode project files.
+
+you will have to hand compile them yourself from the command line.
+
+typically, something like:
+
+clang main.c -framework Foundation -framework AudioToolbox
+
+will work.
