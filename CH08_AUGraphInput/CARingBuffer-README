@@ -1,0 +1,15 @@
+"LEARNING CORE AUDIO" - IMPORTANT NOTE ABOUT THE CARingBuffer CLASS
+
+As one of our book's few external dependencies, this CARingBuffer class has caused problems for a number of readers. Here's a summary:
+
+* FOR READERS ON OS X 10.6 AND EARLIER - As mentioned in the p. 167 footnote, an older version of the CARingBuffer class was buggy and was updated on Apple's website. Unfortunately, some versions of Xcode tools would overwrite the good version with the older, buggier one. The way to tell the difference is that the good version of the class has a Fetch() method that takes three arguments, while the buggy one takes a fourth argument (a bool). More info in Apple Technical Q&A 1665 (sorry, no URL because Apple re-organizes their website every few months and breaks incoming links)
+
+* FOR READERS USING XCODE 4.2 OR EARLIER - The CARingBuffer files (.h and .cpp) are installed at /Developer/Extras/CoreAudio/PublicUtility, as described in the book. Then see the 4.5 point below for an important warning about paths.
+
+* FOR READERS USING XCODE 4.3 AND 4.4 - The CARingBuffer files are an optional download from Apple's website. Use Xcode's "More Developer Tools..." menu item, and search for the "Audio Tools for Xcode" package. Put the PublicUtility directory in /Developer/Extras (as in 4.2 and earlier versions of Xcode), then see the 4.5 point below for an important warning about paths.
+
+* FOR READERS USING XCODE 4.5 AND UP - The CARingBuffer is no longer in the "Audio Tools for Xcode" package (though you'll still need that package for the AULab application that we use in chapter 12). Instead, go to Xcode's documentation browser and search for "Core Audio Public Utility". The result looks like a sample code project, but will actually unzip a "CoreAudioUtilityClasses" folder (containing a "CoreAudio" folder and a "Readme.rtf" document) in your ~/Downloads directory. The "Readme" directs you to put the files in /Library/Developer.
+
+	The "CoreAudio" folder contains the "PublicUtility" folder, so the path to the CARingBuffer class is /Library/Developer/CoreAudio/PublicUtility/CARingBuffer.h and /Library/Developer/CoreAudio/PublicUtility/CARingBuffer.cpp.
+	
+	IMPORTANT: In this version of the downloadable code, we have set the CARingBuffer files to use an absolute reference to this new path. So, if you're using the latest Xcode and you follow Apple's directions, everything will just work. If you have PublicUtility in a different location (maybe because you're on an older version of Xcode), you'll have to re-point those file references with Xcode's File Inspector (cmd-option-1).
